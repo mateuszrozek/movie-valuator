@@ -2,8 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import './App.css';
 import {Navbar} from "./app/Navbar";
-import {ValuationConfig} from "./feature/ValuationConfig";
-import {ValuationForm} from './feature/ValuationForm';
+import {ValuationConfig} from "./feature/config/ValuationConfig";
+import {ValuationForm} from './feature/form/ValuationForm';
 
 function App() {
     return (
