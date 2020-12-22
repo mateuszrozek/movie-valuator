@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
+import { useDispatch} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { formUpdated } from './formSlice';
 
 export const ValuationForm = () => {
 
@@ -7,6 +9,8 @@ export const ValuationForm = () => {
     const [rawM, setRawM] = useState<number>(0);
     const [finalH, setFinalH] = useState<number>(0);
     const [finalM, setFinalM] = useState<number>(0);
+
+    const dispatch = useDispatch();
 
     const onRawHChanged = (e: ChangeEvent<HTMLInputElement>) => setRawH(castStringToNumberSafely(e.target.value));
     const onRawMChanged = (e: ChangeEvent<HTMLInputElement>) => setRawM(castStringToNumberSafely(e.target.value))
@@ -20,11 +24,16 @@ export const ValuationForm = () => {
         return Number(str);
     }
 
-    const calculate = () => {
-        console.log(rawH);
-        console.log(rawM);
-        console.log(finalH);
-        console.log(finalM);
+    const submitData = () => {
+
+        const rawDuration = calculateDuration(rawH, rawM);
+        const finalDuration = calculateDuration(finalH, finalM);
+
+        dispatch(formUpdated({rawDuration, finalDuration}));
+    }
+
+    const calculateDuration = (hours: number, minutes: number): number => {
+        return 60 * hours + minutes;
     }
 
     return (
@@ -88,7 +97,7 @@ export const ValuationForm = () => {
                     </div>
                 </div>
             </form>
-            <button className='button' onClick={calculate}>Oblicz</button>
+            <button className='button' onClick={submitData}>Oblicz</button>
         </section>
     );
 }

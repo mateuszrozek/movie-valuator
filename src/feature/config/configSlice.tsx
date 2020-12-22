@@ -8,9 +8,8 @@ const initialState = {
 const configSlice = createSlice({
         name: 'config',
         initialState,
-        reducers:{}
+        reducers: {}
     }
-
 );
 
 export default configSlice.reducer;

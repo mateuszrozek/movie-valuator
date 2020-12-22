@@ -4,6 +4,7 @@ import './App.css';
 import {Navbar} from "./app/Navbar";
 import {ValuationConfig} from "./feature/config/ValuationConfig";
 import {ValuationForm} from './feature/form/ValuationForm';
+import {ResultTable} from "./feature/calculations/ResultTable";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         render={() => (
                             <React.Fragment>
                                 <ValuationForm/>
+                                <ResultTable/>
                             </React.Fragment>
                         )}
                     />
