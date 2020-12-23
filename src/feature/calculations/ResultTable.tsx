@@ -19,7 +19,7 @@ export const ResultTable = () => {
 
     return (
         <div>
-            <h1>{calculatePrice(rawDuration, finalDuration)}</h1>
+            <h1>Wycena filmu: {calculatePrice(rawDuration, finalDuration)}</h1>
         </div>
     )
 }
