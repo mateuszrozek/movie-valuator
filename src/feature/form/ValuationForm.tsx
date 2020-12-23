@@ -1,7 +1,8 @@
 import React, {ChangeEvent, useState} from 'react';
-import { useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { formUpdated } from './formSlice';
+import {finalDurationUpdated, formUpdated, rawDurationUpdated} from './formSlice';
+import {RootState} from "../../app/store";
 
 export const ValuationForm = () => {
 
@@ -12,10 +13,37 @@ export const ValuationForm = () => {
 
     const dispatch = useDispatch();
 
-    const onRawHChanged = (e: ChangeEvent<HTMLInputElement>) => setRawH(castStringToNumberSafely(e.target.value));
-    const onRawMChanged = (e: ChangeEvent<HTMLInputElement>) => setRawM(castStringToNumberSafely(e.target.value))
-    const onFinalHChanged = (e: ChangeEvent<HTMLInputElement>) => setFinalH(castStringToNumberSafely(e.target.value))
-    const onFinalMChanged = (e: ChangeEvent<HTMLInputElement>) => setFinalM(castStringToNumberSafely(e.target.value))
+    const rawDuration = useSelector((state: RootState) => state.form.rawDuration);
+    const finalDuration = useSelector((state: RootState) => state.form.finalDuration);
+
+    const onRawHChanged = (e: ChangeEvent<HTMLInputElement>) => processRaw(castStringToNumberSafely(e.target.value), true);
+    const onRawMChanged = (e: ChangeEvent<HTMLInputElement>) => processRaw(castStringToNumberSafely(e.target.value), false);
+    const onFinalHChanged = (e: ChangeEvent<HTMLInputElement>) => processFinal(castStringToNumberSafely(e.target.value), true);
+    const onFinalMChanged = (e: ChangeEvent<HTMLInputElement>) => processFinal(castStringToNumberSafely(e.target.value), false);
+
+    const processRaw = (value: number, hours: boolean) => {
+        let rawDuration;
+        if (hours) {
+            setRawH(value);
+            rawDuration = calculateDuration(value, rawM);
+        } else {
+            setRawM(value);
+            rawDuration = calculateDuration(rawH, value);
+        }
+        dispatch(rawDurationUpdated({rawDuration}));
+    }
+
+    const processFinal = (value: number, hours: boolean) => {
+        let finalDuration;
+        if (hours) {
+            setFinalH(value);
+            finalDuration = calculateDuration(value, finalM);
+        } else {
+            setFinalM(value)
+            finalDuration = calculateDuration(finalH, value);
+        }
+        dispatch(finalDurationUpdated({finalDuration}));
+    }
 
     const castStringToNumberSafely = (str: string): number => {
         if (str === undefined) {
@@ -35,6 +63,8 @@ export const ValuationForm = () => {
     const calculateDuration = (hours: number, minutes: number): number => {
         return 60 * hours + minutes;
     }
+
+    const dataValid = rawDuration >= finalDuration;
 
     return (
         <section className='jumbotron'>
@@ -97,7 +127,7 @@ export const ValuationForm = () => {
                     </div>
                 </div>
             </form>
-            <button className='button' onClick={submitData}>Oblicz</button>
+            <button className='button' disabled={!dataValid} onClick={submitData}>Oblicz</button>
         </section>
     );
 }

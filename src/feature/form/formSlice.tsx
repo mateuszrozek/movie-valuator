@@ -8,16 +8,24 @@ const initialState = {
 const formSlice = createSlice({
     name: 'form',
     initialState,
-    reducers:{
-        formUpdated(state, action){
+    reducers: {
+        formUpdated(state, action) {
             const {rawDuration, finalDuration} = action.payload;
             state.rawDuration = rawDuration;
+            state.finalDuration = finalDuration;
+        },
+        rawDurationUpdated(state, action) {
+            const {rawDuration} = action.payload;
+            state.rawDuration = rawDuration;
+        },
+        finalDurationUpdated(state, action) {
+            const {finalDuration} = action.payload;
             state.finalDuration = finalDuration;
         }
     }
 });
 
 
-export const {formUpdated} = formSlice.actions;
+export const {formUpdated, rawDurationUpdated, finalDurationUpdated} = formSlice.actions;
 
 export default formSlice.reducer;
