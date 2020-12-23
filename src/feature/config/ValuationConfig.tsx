@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../app/store";
 import {castStringToNumberSafely} from "../utils/Utils";
-import { saveConfiguration } from './configSlice';
+import {saveConfiguration} from './configSlice';
 
 export const ValuationConfig = () => {
 
@@ -24,6 +24,7 @@ export const ValuationConfig = () => {
 
     return (
         <section className='jumbotron'>
+            <h2>Konfiguracja</h2>
             <div className='container'>
                 <div className='row border justify-content-center'>
                     <div className='col-4'>
