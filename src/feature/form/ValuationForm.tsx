@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {finalDurationUpdated, formUpdated, rawDurationUpdated} from './formSlice';
 import {RootState} from "../../app/store";
+import {castStringToNumberSafely} from "../utils/Utils";
 
 export const ValuationForm = () => {
 
@@ -43,13 +44,6 @@ export const ValuationForm = () => {
             finalDuration = calculateDuration(finalH, value);
         }
         dispatch(finalDurationUpdated({finalDuration}));
-    }
-
-    const castStringToNumberSafely = (str: string): number => {
-        if (str === undefined) {
-            return 0;
-        }
-        return Number(str);
     }
 
     const submitData = () => {

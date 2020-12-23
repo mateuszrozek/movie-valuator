@@ -5,7 +5,7 @@ import {RootState} from "../../app/store";
 
 export const ResultTable = () => {
 
-    const basePrice = useSelector((state: RootState) => state.config.basePrice);
+    const basePrice = useSelector((state: RootState) => state.config.basePrice.value);
     const rawDuration = useSelector((state: RootState) => state.form.rawDuration);
     const finalDuration = useSelector((state: RootState) => state.form.finalDuration);
 

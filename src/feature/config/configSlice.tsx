@@ -1,15 +1,25 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    basePrice: 300,
+    basePrice: {
+        name: 'Cena podstawowa',
+        value: 300
+    },
     rawToFinalCoefficient: 2.0
 }
 
 const configSlice = createSlice({
         name: 'config',
         initialState,
-        reducers: {}
+        reducers: {
+            saveConfiguration(state, action) {
+                const {basePriceValue} = action.payload;
+                state.basePrice.value = basePriceValue;
+            }
+        }
     }
 );
+
+export const {saveConfiguration} = configSlice.actions;
 
 export default configSlice.reducer;

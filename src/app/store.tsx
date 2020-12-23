@@ -4,7 +4,10 @@ import configReducer from "../feature/config/configSlice";
 
 export interface RootState {
     config: {
-        basePrice: number,
+        basePrice: {
+            name: string,
+            value: number
+        },
         rawToFinalCoefficient: number
     },
     form: {
