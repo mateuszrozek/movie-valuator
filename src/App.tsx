@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom
 import './App.css';
 import {Navbar} from "./app/Navbar";
 import {ValuationConfig} from "./feature/config/ValuationConfig";
-import {ValuationForm} from './feature/form/ValuationForm';
+import {ValuationOptions} from './feature/form/ValuationOptions';
 import {ResultTable} from "./feature/calculations/ResultTable";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
                         path='/'
                         render={() => (
                             <React.Fragment>
-                                <ValuationForm/>
+                                <ValuationOptions/>
                                 <ResultTable/>
                             </React.Fragment>
                         )}

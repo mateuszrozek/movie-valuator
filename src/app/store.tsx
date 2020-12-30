@@ -1,6 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import formReducer from '../../src/feature/form/formSlice';
 import configReducer from "../feature/config/configSlice";
+import calculationsReducer from "../feature/calculations/calculationsSlice";
 
 export interface RootState {
     config: {
@@ -13,12 +14,16 @@ export interface RootState {
     form: {
         rawDuration: number,
         finalDuration: number
+    },
+    calculations: {
+        finalValuation: string
     }
 }
 
 export default configureStore({
     reducer: {
         form: formReducer,
-        config: configReducer
+        config: configReducer,
+        calculations: calculationsReducer
     }
 });

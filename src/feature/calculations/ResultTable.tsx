@@ -5,6 +5,9 @@ import {RootState} from "../../app/store";
 
 export const ResultTable = () => {
 
+    const finalValuation = useSelector((state: RootState) => state.calculations.finalValuation)
+
+
     const basePrice = useSelector((state: RootState) => state.config.basePrice.value);
     const rawDuration = useSelector((state: RootState) => state.form.rawDuration);
     const finalDuration = useSelector((state: RootState) => state.form.finalDuration);
@@ -19,7 +22,7 @@ export const ResultTable = () => {
 
     return (
         <div>
-            <h1>Wycena filmu: {calculatePrice(rawDuration, finalDuration)}</h1>
+            {(finalValuation !== '' ? <h1>Wycena filmu: {finalValuation}</h1> : '')}
         </div>
     )
 }
