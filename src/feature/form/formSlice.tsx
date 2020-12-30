@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     rawDuration: 0,
-    finalDuration: 0
+    finalDuration: 0,
+    workHours: 9
 }
 
 const formSlice = createSlice({
@@ -21,11 +22,15 @@ const formSlice = createSlice({
         finalDurationUpdated(state, action) {
             const {finalDuration} = action.payload;
             state.finalDuration = finalDuration;
+        },
+        workHoursUpdated(state, action) {
+            const {workHours} = action.payload;
+            state.workHours = workHours;
         }
     }
 });
 
 
-export const {formUpdated, rawDurationUpdated, finalDurationUpdated} = formSlice.actions;
+export const {formUpdated, rawDurationUpdated, finalDurationUpdated, workHoursUpdated} = formSlice.actions;
 
 export default formSlice.reducer;

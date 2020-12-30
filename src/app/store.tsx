@@ -13,7 +13,8 @@ export interface RootState {
     },
     form: {
         rawDuration: number,
-        finalDuration: number
+        finalDuration: number,
+        workHours: number
     },
     calculations: {
         finalValuation: string

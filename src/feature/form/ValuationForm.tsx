@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {finalDurationUpdated, formUpdated, rawDurationUpdated} from './formSlice';
+import {finalDurationUpdated, formUpdated, rawDurationUpdated, workHoursUpdated} from './formSlice';
 import {RootState} from "../../app/store";
 import {castStringToNumberSafely} from "../utils/Utils";
 
@@ -11,6 +11,7 @@ export const ValuationForm = () => {
     const [rawM, setRawM] = useState<number>(0);
     const [finalH, setFinalH] = useState<number>(0);
     const [finalM, setFinalM] = useState<number>(0);
+    const [workHours, setWorkHours] = useState<number>(9);
 
     const dispatch = useDispatch();
 
@@ -21,6 +22,13 @@ export const ValuationForm = () => {
     const onRawMChanged = (e: ChangeEvent<HTMLInputElement>) => processRaw(castStringToNumberSafely(e.target.value), false);
     const onFinalHChanged = (e: ChangeEvent<HTMLInputElement>) => processFinal(castStringToNumberSafely(e.target.value), true);
     const onFinalMChanged = (e: ChangeEvent<HTMLInputElement>) => processFinal(castStringToNumberSafely(e.target.value), false);
+
+    const onWorkHoursChanged = (e: ChangeEvent<HTMLInputElement>) => processWorkHours(castStringToNumberSafely(e.target.value));
+
+    const processWorkHours = (hours: number) => {
+        setWorkHours(hours);
+        dispatch(workHoursUpdated({workHours: hours}));
+    }
 
     const processRaw = (value: number, hours: boolean) => {
         let rawDuration;
@@ -67,6 +75,15 @@ export const ValuationForm = () => {
                 <div className="container">
                     <div className="row flex-row">
                         <div className="col form-group border">
+                            <label className='col-form-label'>Ilość godzin pracy</label>
+                            <div className="form-inline justify-content-center">
+                                <input id='work-hours' name='work-hours' type='number' min='9' max='999'
+                                       className='form-control'
+                                       value={workHours}
+                                       onChange={(e) => onWorkHoursChanged(e)}/>
+                            </div>
+                        </div>
+                        <div className="col form-group border">
                             <label className='col-form-label'>Ilość materiału</label>
                             <div className="form-inline">
                                 <input id='raw-h' name='raw-h' type='number' min='0' max='23'
@@ -96,6 +113,9 @@ export const ValuationForm = () => {
                                 <label htmlFor='final-m'>m</label>
                             </div>
                         </div>
+
+                    </div>
+                    <div className="row flex-row">
                         <div className='col form-group border'>
                             <label className="col-form-label" htmlFor="inlineFormCustomSelectPref">Fajerwerki</label>
                             <select className='custom-select' required id="inlineFormCustomSelectPref">
