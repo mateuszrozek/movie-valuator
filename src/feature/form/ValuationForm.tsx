@@ -1,7 +1,13 @@
 import React, {ChangeEvent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {finalDurationUpdated, formUpdated, rawDurationUpdated, workHoursUpdated} from './formSlice';
+import {
+    colorGradingUpdated,
+    finalDurationUpdated,
+    formUpdated,
+    rawDurationUpdated,
+    workHoursUpdated
+} from './formSlice';
 import {RootState} from "../../app/store";
 import {castStringToNumberSafely} from "../utils/Utils";
 
@@ -24,6 +30,12 @@ export const ValuationForm = () => {
     const onFinalMChanged = (e: ChangeEvent<HTMLInputElement>) => processFinal(castStringToNumberSafely(e.target.value), false);
 
     const onWorkHoursChanged = (e: ChangeEvent<HTMLInputElement>) => processWorkHours(castStringToNumberSafely(e.target.value));
+
+    const onColorGradingChanged = (e: ChangeEvent<HTMLInputElement>) => processColorGrading(e.target.checked);
+
+    const processColorGrading = (colorGrading: boolean) => {
+        dispatch(colorGradingUpdated({colorGrading}));
+    }
 
     const processWorkHours = (hours: number) => {
         setWorkHours(hours);
@@ -128,14 +140,9 @@ export const ValuationForm = () => {
                     </div>
                     <div className="row align-items-baseline">
                         <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Mastering dźwięku</label>
-                        </div>
-                    </div>
-                    <div className="row align-items-baseline">
-                        <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Mastering obrazu</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"
+                                   onChange={(e) => onColorGradingChanged(e)}/>
+                            <label className="form-check-label" htmlFor="exampleCheck1">Color Grading</label>
                         </div>
 
                     </div>

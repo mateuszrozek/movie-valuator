@@ -14,7 +14,8 @@ export interface RootState {
     form: {
         rawDuration: number,
         finalDuration: number,
-        workHours: number
+        workHours: number,
+        colorGrading: boolean
     },
     calculations: {
         finalValuation: string
