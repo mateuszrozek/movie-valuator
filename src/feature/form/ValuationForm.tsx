@@ -10,6 +10,8 @@ import {
 } from './formSlice';
 import {RootState} from "../../app/store";
 import {castStringToNumberSafely} from "../utils/Utils";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
 
 export const ValuationForm = () => {
 
@@ -80,6 +82,25 @@ export const ValuationForm = () => {
 
     const dataValid = rawDuration >= finalDuration;
 
+    const marks = [
+        {
+            value: 0,
+            label: 'brak',
+        },
+        {
+            value: 1,
+            label: 'podstawowe',
+        },
+        {
+            value: 2,
+            label: 'średniozaawansowane',
+        },
+        {
+            value: 3,
+            label: 'zaawansowane',
+        },
+    ];
+
     return (
         <section className='jumbotron'>
             <h2>Wycena filmu</h2>
@@ -125,26 +146,29 @@ export const ValuationForm = () => {
                                 <label htmlFor='final-m'>m</label>
                             </div>
                         </div>
-
                     </div>
                     <div className="row flex-row">
-                        <div className='col form-group border'>
-                            <label className="col-form-label" htmlFor="inlineFormCustomSelectPref">Fajerwerki</label>
-                            <select className='custom-select' required id="inlineFormCustomSelectPref">
-                                <option defaultValue={2}>Wybierz...</option>
-                                <option value="1">Mało</option>
-                                <option value="2">Średnio</option>
-                                <option value="3">Dużo</option>
-                            </select>
+                        <div className="col form-group border">
+                            <Typography id="discrete-slider" gutterBottom>
+                                Fajerwerki
+                            </Typography>
+                            <Slider
+                                defaultValue={0}
+                                aria-labelledby="discrete-slider"
+                                valueLabelDisplay="auto"
+                                step={1}
+                                marks={marks}
+                                min={0}
+                                max={3}
+                            />
                         </div>
                     </div>
-                    <div className="row align-items-baseline">
+                    <div className="row align-items-baseline border">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"
                                    onChange={(e) => onColorGradingChanged(e)}/>
                             <label className="form-check-label" htmlFor="exampleCheck1">Color Grading</label>
                         </div>
-
                     </div>
                 </div>
             </form>
