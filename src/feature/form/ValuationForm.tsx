@@ -6,6 +6,7 @@ import {
     finalDurationUpdated,
     formUpdated,
     rawDurationUpdated,
+    sliderUpdated,
     workHoursUpdated
 } from './formSlice';
 import {RootState} from "../../app/store";
@@ -101,12 +102,17 @@ export const ValuationForm = () => {
         },
     ];
 
+
+    const onSliderChanged = (event: any, newValue: number | number[]) => {
+        dispatch(sliderUpdated({fireworks: newValue}));
+    };
+
     return (
         <section className='jumbotron'>
             <h2>Wycena filmu</h2>
             <form>
                 <div className="container">
-                    <div className="row flex-row">
+                    <div className="row">
                         <div className="col form-group border">
                             <label className='col-form-label'>Ilość godzin pracy</label>
                             <div className="form-inline justify-content-center">
@@ -147,7 +153,7 @@ export const ValuationForm = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row flex-row">
+                    <div className="row">
                         <div className="col form-group border">
                             <Typography id="discrete-slider" gutterBottom>
                                 Fajerwerki
@@ -160,6 +166,7 @@ export const ValuationForm = () => {
                                 marks={marks}
                                 min={0}
                                 max={3}
+                                onChange={onSliderChanged}
                             />
                         </div>
                     </div>

@@ -30,30 +30,35 @@ export const ValuationOptions = () => {
         <div className='jumbotron container'>
             <fieldset className="form-group">
                 <div className="row align-items-center justify-content-center h5">
-                    <legend className="col-form-label col">Ile godzin pracy</legend>
-                    <div className="col">
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                   value="option1" onChange={e => radioButtonChanged(e)}/>
-                            <label className="form-check-label" htmlFor="gridRadios1">
-                                Do 15 minut
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                   value="option2" onChange={e => radioButtonChanged(e)}/>
-                            <label className="form-check-label" htmlFor="gridRadios2">
-                                Do 8 godzin
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
-                                   value="option3" onChange={e => radioButtonChanged(e)}/>
-                            <label className="form-check-label" htmlFor="gridRadios3">
-                                Powyżej 8 godzin
-                            </label>
+                    <div className="col-8">
+                        <div className="row align-items-center justify-content-center h5 border">
+                            <legend className="col-form-label col text-right">Ile godzin pracy</legend>
+                            <div className="col text-left">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                           value="option1" onChange={e => radioButtonChanged(e)}/>
+                                    <label className="form-check-label" htmlFor="gridRadios1">
+                                        Do 15 minut
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                           value="option2" onChange={e => radioButtonChanged(e)}/>
+                                    <label className="form-check-label" htmlFor="gridRadios2">
+                                        Do 8 godzin
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                           value="option3" onChange={e => radioButtonChanged(e)}/>
+                                    <label className="form-check-label" htmlFor="gridRadios3">
+                                        Powyżej 8 godzin
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
 
                 </div>
             </fieldset>

@@ -4,7 +4,8 @@ const initialState = {
     rawDuration: 0,
     finalDuration: 0,
     workHours: 9,
-    colorGrading: false
+    colorGrading: false,
+    fireworks: 0
 }
 
 const formSlice = createSlice({
@@ -31,6 +32,10 @@ const formSlice = createSlice({
         colorGradingUpdated(state, action) {
             const {colorGrading} = action.payload;
             state.colorGrading = colorGrading;
+        },
+        sliderUpdated(state, action) {
+            const {fireworks} = action.payload;
+            state.fireworks = fireworks;
         }
     }
 });
@@ -41,7 +46,8 @@ export const {
     rawDurationUpdated,
     finalDurationUpdated,
     workHoursUpdated,
-    colorGradingUpdated
+    colorGradingUpdated,
+    sliderUpdated
 } = formSlice.actions;
 
 export default formSlice.reducer;
