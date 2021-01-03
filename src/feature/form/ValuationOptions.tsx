@@ -1,7 +1,8 @@
 import React, {ChangeEvent, useState} from 'react';
 import {ValuationForm} from "./ValuationForm";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {finalValuationUpdated} from '../calculations/calculationsSlice';
+import {RootState} from "../../app/store";
 
 export const ValuationOptions = () => {
 
@@ -9,16 +10,23 @@ export const ValuationOptions = () => {
 
     const [thirdButton, setThirdButton] = useState(false);
 
+    const limitOfCheapValue = useSelector((state: RootState) => state.config.limitOfCheap.value);
+    const priceOfCheapValue = useSelector((state: RootState) => state.config.priceOfCheap.value);
+    const limitOfConstantValue = useSelector((state: RootState) => state.config.limitOfConstant.value);
+    const priceOfConstantValue = useSelector((state: RootState) => state.config.priceOfConstant.value);
+
+    const limitOfConstantValueHours = limitOfConstantValue / 60;
+
 
     const radioButtonChanged = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setThirdButton(value === 'option3');
         switch (value) {
             case 'option1':
-                dispatch(finalValuationUpdated({finalValuation: '100 zł lub za darmo'}));
+                dispatch(finalValuationUpdated({finalValuation: `${priceOfCheapValue} zł lub za darmo`}));
                 break;
             case 'option2':
-                dispatch(finalValuationUpdated({finalValuation: 'Ryczałtem 400 zł'}));
+                dispatch(finalValuationUpdated({finalValuation: `Ryczałtem ${priceOfConstantValue} zł`}));
                 break;
             case 'option3':
                 dispatch(finalValuationUpdated({finalValuation: ''}))
@@ -38,21 +46,21 @@ export const ValuationOptions = () => {
                                     <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
                                            value="option1" onChange={e => radioButtonChanged(e)}/>
                                     <label className="form-check-label" htmlFor="gridRadios1">
-                                        Do 15 minut
+                                        Do {limitOfCheapValue} minut
                                     </label>
                                 </div>
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
                                            value="option2" onChange={e => radioButtonChanged(e)}/>
                                     <label className="form-check-label" htmlFor="gridRadios2">
-                                        Do 8 godzin
+                                        Do {limitOfConstantValueHours} godzin
                                     </label>
                                 </div>
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
                                            value="option3" onChange={e => radioButtonChanged(e)}/>
                                     <label className="form-check-label" htmlFor="gridRadios3">
-                                        Powyżej 8 godzin
+                                        Powyżej {limitOfConstantValueHours} godzin
                                     </label>
                                 </div>
                             </div>
