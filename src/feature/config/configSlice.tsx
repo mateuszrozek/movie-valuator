@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     limitOfCheap: {
-        name: 'Granica niższej stawki (ilość materiału)',
+        name: 'Limit niskiej wyceny',
         value: 15
     },
     priceOfCheap: {
