@@ -4,15 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     colorGradingUpdated,
     finalDurationUpdated,
-    formUpdated,
     rawDurationUpdated,
     sliderUpdated,
     workHoursUpdated
 } from './formSlice';
+import {movieCalculatedUpdated} from '../calculations/calculationsSlice';
 import {RootState} from "../../app/store";
 import {castStringToNumberSafely} from "../utils/Utils";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import {ResultTable} from "../calculations/ResultTable";
 
 export const ValuationForm = () => {
 
@@ -69,12 +70,8 @@ export const ValuationForm = () => {
         dispatch(finalDurationUpdated({finalDuration}));
     }
 
-    const submitData = () => {
-
-        const rawDuration = calculateDuration(rawH, rawM);
-        const finalDuration = calculateDuration(finalH, finalM);
-
-        dispatch(formUpdated({rawDuration, finalDuration}));
+    const calculateMovieValuation = () => {
+        dispatch(movieCalculatedUpdated({movieCalculated: true}));
     }
 
     const calculateDuration = (hours: number, minutes: number): number => {
@@ -106,6 +103,8 @@ export const ValuationForm = () => {
     const onSliderChanged = (event: any, newValue: number | number[]) => {
         dispatch(sliderUpdated({fireworks: newValue}));
     };
+
+    const movieCalculated = useSelector((state: RootState) => state.calculations.movieCalculated)
 
     return (
         <section className='jumbotron'>
@@ -179,7 +178,8 @@ export const ValuationForm = () => {
                     </div>
                 </div>
             </form>
-            <button className='button' disabled={!dataValid} onClick={submitData}>Oblicz</button>
+            <button className='button mt-sm-2' disabled={!dataValid} onClick={calculateMovieValuation}>Oblicz</button>
+            {movieCalculated && <ResultTable/>}
         </section>
     );
 }

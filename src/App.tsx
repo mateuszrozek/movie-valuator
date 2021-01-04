@@ -4,7 +4,6 @@ import './App.css';
 import {Navbar} from "./app/Navbar";
 import {ValuationConfig} from "./feature/config/ValuationConfig";
 import {ValuationOptions} from './feature/form/ValuationOptions';
-import {ResultTable} from "./feature/calculations/ResultTable";
 
 function App() {
     return (
@@ -16,10 +15,7 @@ function App() {
                         exact
                         path='/'
                         render={() => (
-                            <React.Fragment>
-                                <ValuationOptions/>
-                                <ResultTable/>
-                            </React.Fragment>
+                            <ValuationOptions/>
                         )}
                     />
                     <Route exact path='/config' component={ValuationConfig}/>

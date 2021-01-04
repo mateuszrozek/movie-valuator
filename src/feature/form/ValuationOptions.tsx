@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import {ValuationForm} from "./ValuationForm";
 import {useDispatch, useSelector} from "react-redux";
-import {finalValuationUpdated} from '../calculations/calculationsSlice';
+import {finalValuationUpdated, movieCalculatedUpdated} from '../calculations/calculationsSlice';
 import {RootState} from "../../app/store";
 
 export const ValuationOptions = () => {
@@ -9,6 +9,8 @@ export const ValuationOptions = () => {
     const dispatch = useDispatch();
 
     const [thirdButton, setThirdButton] = useState(false);
+
+    const finalValuation = useSelector((state: RootState) => state.calculations.finalValuation)
 
     const limitOfCheapValue = useSelector((state: RootState) => state.config.limitOfCheap.value);
     const priceOfCheapValue = useSelector((state: RootState) => state.config.priceOfCheap.value);
@@ -23,9 +25,11 @@ export const ValuationOptions = () => {
         setThirdButton(value === 'option3');
         switch (value) {
             case 'option1':
+                dispatch(movieCalculatedUpdated({movieCalculated: false}));
                 dispatch(finalValuationUpdated({finalValuation: `${priceOfCheapValue} zł lub za darmo`}));
                 break;
             case 'option2':
+                dispatch(movieCalculatedUpdated({movieCalculated: false}));
                 dispatch(finalValuationUpdated({finalValuation: `Ryczałtem ${priceOfConstantValue} zł`}));
                 break;
             case 'option3':
@@ -70,6 +74,9 @@ export const ValuationOptions = () => {
 
                 </div>
             </fieldset>
+            <div>
+                {(finalValuation !== '' && !thirdButton ? <h1>Wycena filmu: {finalValuation}</h1> : '')}
+            </div>
             {thirdButton && <ValuationForm/>}
         </div>
     );

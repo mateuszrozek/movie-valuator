@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    finalValuation: ''
+    finalValuation: '',
+    movieCalculated: false
 }
 
 const calculationsSlice = createSlice({
@@ -12,10 +13,14 @@ const calculationsSlice = createSlice({
                 const {finalValuation} = action.payload;
                 state.finalValuation = finalValuation;
             },
+            movieCalculatedUpdated(state, action) {
+                const {movieCalculated} = action.payload;
+                state.movieCalculated = movieCalculated;
+            }
         }
     }
 );
 
-export const {finalValuationUpdated} = calculationsSlice.actions;
+export const {finalValuationUpdated, movieCalculatedUpdated} = calculationsSlice.actions;
 
 export default calculationsSlice.reducer;

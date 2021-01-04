@@ -62,7 +62,8 @@ export interface RootState {
         fireworks: number
     },
     calculations: {
-        finalValuation: string
+        finalValuation: string,
+        movieCalculated: boolean
     }
 }
 
