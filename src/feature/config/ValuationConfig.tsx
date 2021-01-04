@@ -78,103 +78,116 @@ export const ValuationConfig = () => {
         <section className='jumbotron'>
             <h2 className='mb-sm-3'>Konfiguracja</h2>
             <div className='container'>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{limitOfCheapName}</p>
+                <div className='form-group'>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{limitOfCheapName}</p>
+                        </div>
+                        <div className='col '>
+                            <input type='number' value={newLimitOfCheapValue}
+                                   onChange={e => newLimitOfCheapValueChanged(e)}/>
+                        </div>
                     </div>
-                    <div className='col '>
-                        <input type='number' value={newLimitOfCheapValue}
-                               onChange={e => newLimitOfCheapValueChanged(e)}/>
-                    </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{priceOfCheapName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newPriceOfCheapValue}
-                               onChange={e => newPriceOfCheapValueChanged(e)}/>
-                    </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{limitOfConstantName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newLimitOfConstantValue}
-                               onChange={e => newLimitOfConstantValueChanged(e)}/>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{priceOfCheapName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newPriceOfCheapValue}
+                                   onChange={e => newPriceOfCheapValueChanged(e)}/>
+                        </div>
                     </div>
                 </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{priceOfConstantName}</p>
+                <div className='form-group'>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{limitOfConstantName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newLimitOfConstantValue}
+                                   onChange={e => newLimitOfConstantValueChanged(e)}/>
+                        </div>
                     </div>
-                    <div className='col'>
-                        <input type='number' value={newPriceOfConstantValue}
-                               onChange={e => newPriceOfConstantValueChanged(e)}/>
-                    </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{baseRateName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newBaseRateValue} onChange={e => newBaseRateValueChanged(e)}/>
-                    </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{extraRateName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newExtraRateValue} onChange={e => newExtraRateValueChanged(e)}/>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{priceOfConstantName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newPriceOfConstantValue}
+                                   onChange={e => newPriceOfConstantValueChanged(e)}/>
+                        </div>
                     </div>
                 </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{extraRateLimitName}</p>
+                <div className='form-group'>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{baseRateName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newBaseRateValue} onChange={e => newBaseRateValueChanged(e)}/>
+                        </div>
                     </div>
-                    <div className='col'>
-                        <input type='number' value={newExtraRateLimitValue}
-                               onChange={e => newExtraRateLimitValueChanged(e)}/>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{extraRateName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newExtraRateValue} onChange={e => newExtraRateValueChanged(e)}/>
+                        </div>
                     </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{colorGradingCostName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newColorGradingCostValue}
-                               onChange={e => newColorGradingCostValueChanged(e)}/>
-                    </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{fireworksCostOneName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newFireworksCostOneValue}
-                               onChange={e => newFireworksCostOneValueChanged(e)}/>
-                    </div>
-                </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{fireworksCostTwoName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newFireworksCostTwoValue}
-                               onChange={e => newFireworksCostTwoValueChanged(e)}/>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{extraRateLimitName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newExtraRateLimitValue}
+                                   onChange={e => newExtraRateLimitValueChanged(e)}/>
+                        </div>
                     </div>
                 </div>
-                <div className='row border justify-content-center align-items-center'>
-                    <div className='col'>
-                        <p>{fireworksCostThreeName}</p>
-                    </div>
-                    <div className='col'>
-                        <input type='number' value={newFireworksCostThreeValue}
-                               onChange={e => newFireworksCostThreeValueChanged(e)}/>
+
+                <div className='form-group'>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{colorGradingCostName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newColorGradingCostValue}
+                                   onChange={e => newColorGradingCostValueChanged(e)}/>
+                        </div>
                     </div>
                 </div>
+
+                <div className='form-group'>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{fireworksCostOneName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newFireworksCostOneValue}
+                                   onChange={e => newFireworksCostOneValueChanged(e)}/>
+                        </div>
+                    </div>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{fireworksCostTwoName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newFireworksCostTwoValue}
+                                   onChange={e => newFireworksCostTwoValueChanged(e)}/>
+                        </div>
+                    </div>
+                    <div className='row border justify-content-center align-items-center'>
+                        <div className='col text-right'>
+                            <p>{fireworksCostThreeName}</p>
+                        </div>
+                        <div className='col'>
+                            <input type='number' value={newFireworksCostThreeValue}
+                                   onChange={e => newFireworksCostThreeValueChanged(e)}/>
+                        </div>
+                    </div>
+                </div>
+
                 <button className='button mt-sm-2' disabled={!dataValid} onClick={saveData}>Zapisz</button>
             </div>
         </section>

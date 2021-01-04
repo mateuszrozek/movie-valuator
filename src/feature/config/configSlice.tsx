@@ -2,35 +2,35 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     limitOfCheap: {
-        name: 'Limit niskiej wyceny',
+        name: 'Limit niskiej wyceny [min]',
         value: 15
     },
     priceOfCheap: {
-        name: 'Granica niskiej wyceny',
+        name: 'Granica niskiej wyceny [zł]',
         value: 100
     },
     limitOfConstant: {
-        name: 'Granica wyceny po ryczałcie',
+        name: 'Granica wyceny po ryczałcie [min]',
         value: 480
     },
     priceOfConstant: {
-        name: 'Granica ryczałtowej wyceny',
+        name: 'Ryczałtowa wycena [zł]',
         value: 400
     },
     baseRate: {
-        name: 'Stawka podstawowa',
+        name: 'Stawka podstawowa [zł]',
         value: 50
     },
     extraRate: {
-        name: 'Stawka podwższona',
+        name: 'Stawka podwyższona [zł]',
         value: 55
     },
     extraRateLimit: {
-        name: 'Granica niższej stawki (ilość materiału)',
+        name: 'Granica niższej stawki (ilość materiału) [min]',
         value: 90
     },
     colorGradingCost: {
-        name: 'Koszt Color Gradingu (za 5 minut filmu)',
+        name: 'Dodatkowy koszt Color Gradingu',
         value: 200
     },
     fireworksCostOne: {

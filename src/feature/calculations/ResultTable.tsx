@@ -122,11 +122,10 @@ export const ResultTable = () => {
     }
 
     const defineColorGrading = () => {
-        let colorGrading = 0;
         if (colorGradingOrdered) {
-            colorGrading = colorGradingCostValue * (finalDuration / 5);
+            return colorGradingCostValue;
         }
-        return colorGrading;
+        return 0;
     }
 
     return (
