@@ -78,7 +78,7 @@ export const ValuationForm = () => {
         return 60 * hours + minutes;
     }
 
-    const dataValid = rawDuration >= finalDuration;
+    const dataValid = rawDuration >= finalDuration && rawDuration > 0 && finalDuration > 0;
 
     const marks = [
         {

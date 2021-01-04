@@ -75,7 +75,7 @@ export const ValuationOptions = () => {
                 </div>
             </fieldset>
             <div>
-                {(finalValuation !== '' && !thirdButton ? <h1>Wycena filmu: {finalValuation}</h1> : '')}
+                {(finalValuation !== '' && !thirdButton ? <h3>Wycena filmu: {finalValuation}</h3> : '')}
             </div>
             {thirdButton && <ValuationForm/>}
         </div>
