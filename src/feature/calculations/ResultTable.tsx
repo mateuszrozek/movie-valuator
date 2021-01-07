@@ -5,37 +5,20 @@ import {RootState} from "../../app/store";
 
 export const ResultTable = () => {
 
-    const finalValuation = useSelector((state: RootState) => state.calculations.finalValuation);
     const movieCalculated = useSelector((state: RootState) => state.calculations.movieCalculated);
 
-    const limitOfCheapName = useSelector((state: RootState) => state.config.limitOfCheap.name);
-    const limitOfCheapValue = useSelector((state: RootState) => state.config.limitOfCheap.value);
-    const priceOfCheapName = useSelector((state: RootState) => state.config.priceOfCheap.name);
-    const priceOfCheapValue = useSelector((state: RootState) => state.config.priceOfCheap.value);
-    const limitOfConstantName = useSelector((state: RootState) => state.config.limitOfConstant.name);
-    const limitOfConstantValue = useSelector((state: RootState) => state.config.limitOfConstant.value);
-    const priceOfConstantName = useSelector((state: RootState) => state.config.priceOfConstant.name);
-    const priceOfConstantValue = useSelector((state: RootState) => state.config.priceOfConstant.value);
-    const baseRateName = useSelector((state: RootState) => state.config.baseRate.name);
     const baseRateValue = useSelector((state: RootState) => state.config.baseRate.value);
-    const extraRateName = useSelector((state: RootState) => state.config.extraRate.name);
     const extraRateValue = useSelector((state: RootState) => state.config.extraRate.value);
-    const extraRateLimitName = useSelector((state: RootState) => state.config.extraRateLimit.name);
     const extraRateLimitValue = useSelector((state: RootState) => state.config.extraRateLimit.value);
-    const colorGradingCostName = useSelector((state: RootState) => state.config.colorGradingCost.name);
     const colorGradingCostValue = useSelector((state: RootState) => state.config.colorGradingCost.value);
-    const fireworksCostOneName = useSelector((state: RootState) => state.config.fireworksCostOne.name);
     const fireworksCostOneValue = useSelector((state: RootState) => state.config.fireworksCostOne.value);
-    const fireworksCostTwoName = useSelector((state: RootState) => state.config.fireworksCostTwo.name);
     const fireworksCostTwoValue = useSelector((state: RootState) => state.config.fireworksCostTwo.value);
-    const fireworksCostThreeName = useSelector((state: RootState) => state.config.fireworksCostThree.name);
     const fireworksCostThreeValue = useSelector((state: RootState) => state.config.fireworksCostThree.value);
 
     const workHours = useSelector((state: RootState) => state.form.workHours);
     const fireworksLevel = useSelector((state: RootState) => state.form.fireworks);
     const colorGradingOrdered = useSelector((state: RootState) => state.form.colorGrading);
     const rawDuration = useSelector((state: RootState) => state.form.rawDuration);
-    const finalDuration = useSelector((state: RootState) => state.form.finalDuration);
 
     const defineRate = () => {
         if (rawDuration > extraRateLimitValue) {
