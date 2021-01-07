@@ -108,7 +108,7 @@ export const ValuationForm = () => {
 
     return (
         <section className='jumbotron'>
-            <h2>Wycena filmu</h2>
+            <h3>Formularz wyceny</h3>
             <form>
                 <div className="container">
                     <div className="row">
