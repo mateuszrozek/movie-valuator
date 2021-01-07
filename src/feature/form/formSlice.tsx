@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     rawDuration: 0,
     finalDuration: 0,
-    workHours: 9,
+    workHours: 8,
     colorGrading: false,
     fireworks: 0
 }

@@ -115,7 +115,7 @@ export const ValuationForm = () => {
                         <div className="col form-group border">
                             <label className='col-form-label'>Ilość godzin pracy</label>
                             <div className="form-inline justify-content-center">
-                                <input id='work-hours' name='work-hours' type='number' min='9' max='999'
+                                <input id='work-hours' name='work-hours' type='number' min='8' max='999'
                                        className='form-control'
                                        value={workHours}
                                        onChange={(e) => onWorkHoursChanged(e)}/>
