@@ -2,19 +2,19 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     limitOfCheap: {
-        name: 'Limit niskiej wyceny [min]',
+        name: 'Czas niskiej wyceny [min]',
         value: 15
     },
     priceOfCheap: {
-        name: 'Granica niskiej wyceny [zł]',
+        name: 'Wartość niskiej wyceny [zł]',
         value: 100
     },
     limitOfConstant: {
-        name: 'Granica wyceny po ryczałcie [min]',
+        name: 'Czas ryczałtowej wyceny [min]',
         value: 480
     },
     priceOfConstant: {
-        name: 'Ryczałtowa wycena [zł]',
+        name: 'Wartość ryczałtowej wyceny [zł]',
         value: 400
     },
     baseRate: {
@@ -26,23 +26,23 @@ const initialState = {
         value: 55
     },
     extraRateLimit: {
-        name: 'Granica niższej stawki (ilość materiału) [min]',
+        name: 'Graniczna ilość materiału pomiędzy stawkami [min]',
         value: 90
     },
     colorGradingCost: {
-        name: 'Dodatkowy koszt Color Gradingu',
+        name: 'Dodatkowy koszt Color Gradingu [zł]',
         value: 200
     },
     fireworksCostOne: {
-        name: 'Współczynnik za podstawowowe fajerwerki',
+        name: 'Współczynnik za podstawowowe fajerwerki [-]',
         value: 1.2
     },
     fireworksCostTwo: {
-        name: 'Współczynnik za średniozaawansowane fajerwerki',
+        name: 'Współczynnik za średniozaawansowane fajerwerki [-]',
         value: 1.5
     },
     fireworksCostThree: {
-        name: 'Współczynnik za zaawansowane fajerwerki',
+        name: 'Współczynnik za zaawansowane fajerwerki [-]',
         value: 2
     },
 }

@@ -74,25 +74,39 @@ export const ValuationConfig = () => {
 
     const dataValid = true;
 
+    const limitOfCheapNameTooltip = `Ilość czasu, do której obowiązuje niska wycena ${priceOfCheapValue} złotych`;
+    const priceOfCheapNameTooltip = `Wycena obowiązaująca, jeśli ilość czasu jest mniejsza niż ${limitOfCheapValue} minut`;
+    const limitOfConstantNameTooltip = `Ilość czasu, do której obowiązuje niska wycena ${priceOfConstantValue} złotych`;
+    const priceOfConstantNameTooltip = `Wycena obowiązaująca, jeśli ilość czasu jest mniejsza niż ${limitOfConstantValue} minut`;
+    const baseRateNameTooltip = `Stawka, która obowiązuje, jeśli ilość materiału jest mniejsza niż ${extraRateLimitValue} minut`;
+    const extraRateNameTooltip = `Stawka, która obowiązuje, jeśli ilość materiału jest większa niż ${extraRateLimitValue} minut`;
+    const extraRateLimitNameTooltip = `Ilość materiału, która podwyższa stawkę z ${baseRateValue} zł na ${extraRateValue} zł`;
+    const colorGradingCostNameTooltip = `Koszt dodany do wyceny, jeśli został zamówiony Color Grading`;
+    const fireworksCostOneNameTooltip = `Współczynnik, przez który zostaje wymnożona wycena, jeśli zamówiono podstawowe fajerwerki`;
+    const fireworksCostTwoNameTooltip = `Współczynnik, przez który zostaje wymnożona wycena, jeśli zamówiono średniozaawansowane fajerwerki`;
+    const fireworksCostThreeNameTooltip = `Współczynnik, przez który zostaje wymnożona wycena, jeśli zamówiono zaawansowane fajerwerki`;
+
     return (
         <section className='jumbotron'>
             <h2 className='mb-sm-3'>Konfiguracja</h2>
             <div className='container'>
                 <div className='form-group'>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={limitOfCheapNameTooltip}>
                             <p>{limitOfCheapName}</p>
                         </div>
-                        <div className='col '>
+                        <div className='col-3'>
                             <input type='number' value={newLimitOfCheapValue}
                                    onChange={e => newLimitOfCheapValueChanged(e)}/>
                         </div>
                     </div>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={priceOfCheapNameTooltip}>
                             <p>{priceOfCheapName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newPriceOfCheapValue}
                                    onChange={e => newPriceOfCheapValueChanged(e)}/>
                         </div>
@@ -100,19 +114,21 @@ export const ValuationConfig = () => {
                 </div>
                 <div className='form-group'>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={limitOfConstantNameTooltip}>
                             <p>{limitOfConstantName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newLimitOfConstantValue}
                                    onChange={e => newLimitOfConstantValueChanged(e)}/>
                         </div>
                     </div>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={priceOfConstantNameTooltip}>
                             <p>{priceOfConstantName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newPriceOfConstantValue}
                                    onChange={e => newPriceOfConstantValueChanged(e)}/>
                         </div>
@@ -120,74 +136,78 @@ export const ValuationConfig = () => {
                 </div>
                 <div className='form-group'>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={baseRateNameTooltip}>
                             <p>{baseRateName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newBaseRateValue} onChange={e => newBaseRateValueChanged(e)}/>
                         </div>
                     </div>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={extraRateNameTooltip}>
                             <p>{extraRateName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newExtraRateValue} onChange={e => newExtraRateValueChanged(e)}/>
                         </div>
                     </div>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={extraRateLimitNameTooltip}>
                             <p>{extraRateLimitName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3'>
                             <input type='number' value={newExtraRateLimitValue}
                                    onChange={e => newExtraRateLimitValueChanged(e)}/>
                         </div>
                     </div>
                 </div>
-
                 <div className='form-group'>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={colorGradingCostNameTooltip}>
                             <p>{colorGradingCostName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newColorGradingCostValue}
                                    onChange={e => newColorGradingCostValueChanged(e)}/>
                         </div>
                     </div>
                 </div>
-
                 <div className='form-group'>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={fireworksCostOneNameTooltip}>
                             <p>{fireworksCostOneName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newFireworksCostOneValue}
                                    onChange={e => newFireworksCostOneValueChanged(e)}/>
                         </div>
                     </div>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={fireworksCostTwoNameTooltip}>
                             <p>{fireworksCostTwoName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newFireworksCostTwoValue}
                                    onChange={e => newFireworksCostTwoValueChanged(e)}/>
                         </div>
                     </div>
                     <div className='row border justify-content-center align-items-center'>
-                        <div className='col text-right'>
+                        <div className='col-7 text-right' data-toggle="tooltip" data-placement="top"
+                             title={fireworksCostThreeNameTooltip}>
                             <p>{fireworksCostThreeName}</p>
                         </div>
-                        <div className='col'>
+                        <div className='col-3 '>
                             <input type='number' value={newFireworksCostThreeValue}
                                    onChange={e => newFireworksCostThreeValueChanged(e)}/>
                         </div>
                     </div>
                 </div>
-
                 <button className='button mt-sm-2' disabled={!dataValid} onClick={saveData}>Zapisz</button>
             </div>
         </section>
