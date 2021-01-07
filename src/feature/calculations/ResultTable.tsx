@@ -37,13 +37,58 @@ export const ResultTable = () => {
     const rawDuration = useSelector((state: RootState) => state.form.rawDuration);
     const finalDuration = useSelector((state: RootState) => state.form.finalDuration);
 
+    const defineRate = () => {
+        if (rawDuration > extraRateLimitValue) {
+            return extraRateValue;
+        }
+        return baseRateValue;
+    }
+
+    const defineFireworks = () => {
+        let fireworksCoefficient = 1;
+        switch (fireworksLevel) {
+            case 1:
+                fireworksCoefficient = fireworksCostOneValue;
+                break;
+            case 2:
+                fireworksCoefficient = fireworksCostTwoValue;
+                break;
+            case 3:
+                fireworksCoefficient = fireworksCostThreeValue;
+                break;
+        }
+        return fireworksCoefficient;
+    }
+
+    const defineColorGrading = () => {
+        if (colorGradingOrdered) {
+            return colorGradingCostValue;
+        }
+        return 0;
+    }
+
+    const rate = defineRate();
+    const fireworks = defineFireworks();
+    const colorGrading = defineColorGrading();
+
     const calculatePrice = () => {
 
-        const rate = defineRate();
-        const fireworks = defineFireworks();
-        const colorGrading = defineColorGrading();
-
         const price = (rate * workHours * fireworks) + colorGrading;
+
+        const rateTooltip = `Wynosi 
+        ${baseRateValue}, jeśli długość materiału jest dłuższa niż ${extraRateLimitValue} min,
+        ${extraRateValue}, jeśli jest mniejsza niż ${extraRateLimitValue} min`;
+        const workHoursTooltip = `Ilość godzin pracy mnożona jest przez stawkę godzinową: ${rate} * ${workHours} = ${rate * workHours}`;
+        const fireworksTooltip = `Wynosi: 
+        1 dla braku fejerwerków,
+        ${fireworksCostOneValue} dla podstawowych,
+        ${fireworksCostTwoValue} dla średniozaawansowanych,
+        ${fireworksCostThreeValue} dla zaawansowanych;
+        Wartość jest mnożona razy stawkę godzinową oraz ilość godzin: ${rate} * ${workHours} * ${fireworks} = ${rate * workHours * fireworks}
+        `;
+        const colorGradingTooltip = `Jeśli jest zamówiony, do wyceny dodawane jest ${colorGradingCostValue} złotych:
+        (${rate} * ${workHours} * ${fireworks}) + ${colorGrading} = ${(rate * workHours * fireworks) + colorGrading}
+        `;
 
         return (
             <div className='mt-sm-5 container'>
@@ -76,56 +121,30 @@ export const ResultTable = () => {
                     </div>
                     <div className='col-1'> (
                     </div>
-                    <div className='col-1'> {rate}
+                    <div className='col-1' data-toggle="tooltip" data-placement="top"
+                         title={rateTooltip}> {rate}
                     </div>
                     <div className='col-1'> *
                     </div>
-                    <div className='col-1'> {workHours}
+                    <div className='col-1' data-toggle="tooltip" data-placement="top"
+                         title={workHoursTooltip}> {workHours}
                     </div>
                     <div className='col-1'> *
                     </div>
-                    <div className='col-1'> {fireworks}
+                    <div className='col-1' data-toggle="tooltip" data-placement="top"
+                         title={fireworksTooltip}> {fireworks}
                     </div>
                     <div className='col-1'> )
                     </div>
                     <div className='col-1'> +
                     </div>
-                    <div className='col-1'> {colorGrading}
+                    <div className='col-1' data-toggle="tooltip" data-placement="top"
+                         title={colorGradingTooltip}> {colorGrading}
                     </div>
                 </div>
                 <h2 className='mt-sm-4'>Wycena filmu: {price} zł</h2>
             </div>
         );
-    }
-
-    const defineRate = () => {
-        if (rawDuration > extraRateLimitValue) {
-            return extraRateValue;
-        }
-        return baseRateValue;
-    }
-
-    const defineFireworks = () => {
-        let fireworksCoefficient = 1;
-        switch (fireworksLevel) {
-            case 1:
-                fireworksCoefficient = fireworksCostOneValue;
-                break;
-            case 2:
-                fireworksCoefficient = fireworksCostTwoValue;
-                break;
-            case 3:
-                fireworksCoefficient = fireworksCostThreeValue;
-                break;
-        }
-        return fireworksCoefficient;
-    }
-
-    const defineColorGrading = () => {
-        if (colorGradingOrdered) {
-            return colorGradingCostValue;
-        }
-        return 0;
     }
 
     return (
