@@ -21,7 +21,7 @@ export const ValuationForm = () => {
     const [rawM, setRawM] = useState<number>(0);
     const [finalH, setFinalH] = useState<number>(0);
     const [finalM, setFinalM] = useState<number>(0);
-    const [workHours, setWorkHours] = useState<number>(9);
+    const [workHours, setWorkHours] = useState<number>(8);
 
     const dispatch = useDispatch();
 
