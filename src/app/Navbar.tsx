@@ -5,7 +5,7 @@ export const Navbar = () => {
     return (
         <nav>
             <section>
-                <h1 className='pt-sm-4 mb-sm-3'>Wyceniacz</h1>
+                <h1 className='pt-sm-4 mb-sm-3'>Wyceniadż</h1>
 
                 <div className='navContent'>
                     <div className='navLinks'>
