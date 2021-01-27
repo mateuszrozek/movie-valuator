@@ -5,7 +5,7 @@ import {Navbar} from "./Navbar";
 it('renders apps title', () => {
     const wrapper = shallow(<Navbar/>);
     const title = wrapper.find('h1').text();
-    expect(title).toBe('Wyceniadż');
+    expect(title).toBe('Wyceniacz!');
 });
 
 it('renders first link', () => {
